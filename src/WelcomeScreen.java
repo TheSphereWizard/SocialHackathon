@@ -10,11 +10,10 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	JPanel mainScreen;
 	JButton loginButton, makeAccountButton;
 	JButton createAccountButton;
-	JButton ourMissionButton;
-	JButton otherProductsButton;
 	BufferedImage backgroundColor;
 	LoginScreen loginScreen;
 	CreateAccountScreen createAccountScreen;
+	MessageWriter messageWriter;
 
 	public static int getIntRGB(Color c) {
 		return (c.getRed() <<16) | (c.getGreen() << 8) | (c.getBlue());
@@ -61,10 +60,11 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	}
 	
 	WelcomeScreen() {
+		messageWriter = new MessageWriter();
 		loginScreen = new LoginScreen(this);
 		createAccountScreen = new CreateAccountScreen(this);
 		backgroundColor = new BufferedImage(1600, 900, BufferedImage.TYPE_INT_RGB);
-		makeGradient(backgroundColor, (float)160.0, (float)50.0, (float)0.5, (float)0.2, (float)0.8, (float)0.2);
+		makeGradient(backgroundColor, (float)160.0, (float)120.0, (float)0.5, (float)0.2, (float)0.8, (float)0.2);
 		this.setSize(new Dimension(1600, 900));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);

@@ -19,8 +19,8 @@ public class Email {
 	public static final String host = "pop.gmail.com";// change accordingly
 	public static final String mailStoreType = "pop3s";
 	public static void main(String[] args) {
-	   sendFromGMail("testing"+System.currentTimeMillis(), "testing testing"+System.currentTimeMillis());
-//	   check(host,mailStoreType);
+//	   sendFromGMail("testing"+System.currentTimeMillis(), "testing testing"+System.currentTimeMillis());
+	   check(host,mailStoreType);
 //	   deleteEmail(host, mailStoreType);
    }
    public static void check(String host, String storeType) {
