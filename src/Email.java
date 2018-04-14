@@ -28,6 +28,9 @@ public class Email {
 	   ArrayList<String[]> returnvalue = new ArrayList<String[]>();
       try {
 	      Properties properties = new Properties();
+	      properties.put("mail.pop3.host", host);
+	      properties.put("mail.pop3.port", "995");
+	      properties.put("mail.pop3.starttls.enable", "true");
 	      Session emailSession = Session.getDefaultInstance(properties);
 	      Store store = emailSession.getStore("pop3s");
 	      store.connect(host, username, password);
