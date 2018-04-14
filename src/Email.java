@@ -19,11 +19,14 @@ public class Email {
 	public static final String password = "TestEmail";
 	public static final String host = "pop.gmail.com";// change accordingly
 	public static final String mailStoreType = "pop3s";
-	
+
    public static ArrayList<String[]> check() {
 	   ArrayList<String[]> returnvalue = new ArrayList<String[]>();
       try {
 	      Properties properties = new Properties();
+	      properties.put("mail.pop3.host", host);
+	      properties.put("mail.pop3.port", "995");
+	      properties.put("mail.pop3.starttls.enable", "true");
 	      Session emailSession = Session.getDefaultInstance(properties);
 	      Store store = emailSession.getStore("pop3s");
 	      store.connect(host, username, password);
