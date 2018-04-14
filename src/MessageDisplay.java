@@ -44,7 +44,7 @@ public class MessageDisplay extends JPanel implements ActionListener {
 		checkButton.setBounds(1250, 700, 100, 50);
 	}
 	public void paintComponent(Graphics g) {
-		super.paint(g);
+		super.paintComponent(g);
 		panels.clear();
 		String msg = "";
 		try {
@@ -52,12 +52,15 @@ public class MessageDisplay extends JPanel implements ActionListener {
 			char []buffer = {};
 			fileReader.read(buffer);
 			String allText = new String(buffer);
+			int i=0;
 			while(allText.indexOf("$") != -1) {
 				String subject = allText.substring(0, allText.indexOf("$"));
 				allText=allText.substring(allText.indexOf("$") + 1);
 				String body = allText.substring(0, allText.indexOf("$"));
 				allText=allText.substring(allText.indexOf("$") + 1);
 				panels.add(new JLabel(subject + "\n\n" + body));
+				i++;
+				panels.get(panels.size()-1).setBounds( 50,100*i,800,100);
 			}
 			
 		} catch (Exception e) {
@@ -73,11 +76,15 @@ public class MessageDisplay extends JPanel implements ActionListener {
 		else if(e.getActionCommand().equals("check")) {
 			ArrayList<String[]> messages = Email.check();
 			File file = new File(path);
+			try {
 			FileWriter w = new FileWriter(file);
 			for(String[] s : messages) {
 				w.append(s[0]+"$"+s[1]+"$");
 			}
-			repaint();
+			} catch(Exception sgfde) {
+			
+			}
+			//repaint();
 		}
 	}
 }

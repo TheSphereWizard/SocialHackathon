@@ -14,6 +14,7 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	LoginScreen loginScreen;
 	CreateAccountScreen createAccountScreen;
 	MessageWriter messageWriter;
+	MessageDisplay messageDisplay;
 
 	public static int getIntRGB(Color c) {
 		return (c.getRed() <<16) | (c.getGreen() << 8) | (c.getBlue());
@@ -60,7 +61,8 @@ public class WelcomeScreen extends JFrame implements ActionListener {
 	}
 	
 	WelcomeScreen() {
-		messageWriter = new MessageWriter();
+		messageWriter = new MessageWriter(this);
+		messageDisplay = new MessageDisplay(this);
 		loginScreen = new LoginScreen(this);
 		createAccountScreen = new CreateAccountScreen(this);
 		backgroundColor = new BufferedImage(1600, 900, BufferedImage.TYPE_INT_RGB);

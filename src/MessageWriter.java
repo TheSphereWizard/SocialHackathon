@@ -7,8 +7,10 @@ public class MessageWriter extends JPanel implements ActionListener {
 	JTextField subject;
 	JTextPane document;
 	JButton sendButton, returnButton;
+	WelcomeScreen wS;
 	
-	MessageWriter() {
+	MessageWriter(WelcomeScreen w) {
+		wS = w;
 		this.setSize(new Dimension(1367, 768));
 		this.setLayout(null);
 		
@@ -49,6 +51,9 @@ public class MessageWriter extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("send")) {
 			Email.sendFromGMail(subject.getText(), document.getText());
+		}
+		else if(e.getActionCommand().equals("return")) {
+			wS.setScreen(wS.messageDisplay);
 		}
 	}
 

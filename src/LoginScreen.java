@@ -119,7 +119,7 @@ public class LoginScreen extends JPanel implements ActionListener {
 					} catch(Exception x) {
 						
 					}
-					afterReturnPressed.setScreen(afterReturnPressed.messageWriter);
+					afterReturnPressed.setScreen(afterReturnPressed.messageDisplay);
 					System.out.println("it works.");
 				}
 				else {
