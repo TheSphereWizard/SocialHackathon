@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import javax.mail.Flags;
@@ -23,7 +24,8 @@ public class Email {
 //	   check(host,mailStoreType);
 //	   deleteEmail(host, mailStoreType);
    }
-   public static void check(String host, String storeType) {
+   public static ArrayList<String[]> check() {
+	   ArrayList<String[]> returnvalue = new ArrayList<String[]>();
       try {
 	      Properties properties = new Properties();
 	      Session emailSession = Session.getDefaultInstance(properties);
@@ -35,16 +37,12 @@ public class Email {
 	      System.out.println(emailFolder.getMessages().length);
 	      for (int i =  0; i<Messages.length; i++) {
 	         Message message = Messages[i];
-	         System.out.println("---------------------------------");
-	         System.out.println("Email Number " + (i + 1));
+//	         System.out.println("---------------------------------");
+//	         System.out.println("Email Number " + (i + 1));
 	         System.out.println("Subject: " + message.getSubject());
-	         System.out.println("From: " + message.getFrom()[0]);
+//	         System.out.println("From: " + message.getFrom()[0]);
 	         System.out.println("Text: " + message.getContent().toString());
-	         System.out.println(message.getFlags().getUserFlags().length);
-	         System.out.println(message.getFlags().getSystemFlags().length);
-	         for(String s : message.getFlags().getUserFlags()){
-	        	 System.out.println(s);
-	         }
+	         returnvalue.add(new String[]{message.getSubject(),message.getContent().toString()});
 	      }
 	      System.out.println(emailFolder.getMessages().length);
 	      emailFolder.close(false);
@@ -52,6 +50,7 @@ public class Email {
       } catch (Exception e) {
          e.printStackTrace();
       }
+      return returnvalue;
    }
    
    public static void deleteEmail(String host, String storeType){
