@@ -119,7 +119,7 @@ public class LoginScreen extends JPanel implements ActionListener {
 					} catch(Exception x) {
 						
 					}
-					// go to account screen
+					afterReturnPressed.setScreen(afterReturnPressed.messageWriter);
 					System.out.println("it works.");
 				}
 				else {
